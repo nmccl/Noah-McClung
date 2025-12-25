@@ -1,3 +1,26 @@
+## Deployment notes
+
+- Node requirement: Vite requires Node >= 20.19.0 (or 22.12+). Ensure CI/build environment uses Node 22.
+- This repo includes `.nvmrc` and `.node-version` set to `22`.
+- If using Netlify, set the Node version in Site settings (Environment > Node version) to `22`, or Netlify will read `.nvmrc`.
+- If using Vercel/Render/Cloudflare Pages, set Node to `22.x` in project/build settings and/or rely on `package.json` `engines`.
+
+Commands for local setup:
+```bash
+# install nvm (if needed)
+curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
+source ~/.zshrc
+nvm install 22
+nvm use 22
+nvm alias default 22
+# reinstall deps and build
+cd frontend
+rm -rf node_modules package-lock.json
+npm install
+npm run build
+```
+
+Commit this file if you want the note visible to other contributors.
 # Cloudflare Pages Deployment Guide
 
 This project is configured for deployment on Cloudflare Pages.
