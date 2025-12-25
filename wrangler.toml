@@ -5,5 +5,5 @@ pages_build_output_dir = "./dist"
 
 [env.production]
 routes = [
-  { pattern = "*", zone_name = "your-domain.com" }
+  { pattern = "*", zone_name = "noahmcclung.com" }
 ]
