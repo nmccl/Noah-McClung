@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import { useState, useRef, type ChangeEvent } from 'react'
 import { 
   Bold, 
   Italic, 
@@ -144,9 +144,9 @@ export default function RichTextEditor({ value, onChange }: RichTextEditorProps)
       <textarea
         ref={textareaRef}
         value={value}
-        onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
-          onChange(e.target.value)
-        }
+        onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
+            onChange(e.target.value)
+          }
         placeholder="Write your post content in Markdown..."
         className="w-full min-h-[400px] p-4 bg-[#0A0A0A] text-white font-mono text-sm resize-y focus:outline-none"
         style={{ fontFamily: 'ui-monospace, monospace' }}

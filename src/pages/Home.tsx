@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import ChromeBackground from '@/components/noah/ChromeBackground'
 import Navigation from '@/components/noah/Navigation'

@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import ChromeBackground from '../components/noah/ChromeBackground'
 import Navigation from '../components/noah/Navigation'
 import SectionLabel from '../components/noah/SectionLabel'
 import { Code, Palette, Smartphone, Globe, Camera, Package, Loader2, ExternalLink, X, ChevronLeft, ChevronRight } from 'lucide-react'
-import { projectsApi } from '../functions/supabaseApi'
+import { projectsApi } from '@/lib/api'
 
 const filters = [
   { key: 'all', label: 'All Work' },

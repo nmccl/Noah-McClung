@@ -10,15 +10,19 @@ export interface BlogPost {
   content: string
   category: string
   image_url: string
+  image?: string
   read_time: string
+  readTime?: string
   featured: boolean
   published: boolean
   views: number
   created_at: string
+  date?: string
   updated_at: string
 }
 export interface Product {
   id: string
+  name: string
   slug: string
   description: string
   price: number
@@ -341,6 +345,33 @@ export const projectsApi = {
       return null
     }
   }
+  ,
+  update: async (id: string, updates: Partial<Project>): Promise<Project | null> => {
+    try {
+      const { data, error } = await supabase.from('projects').update(updates).eq('id', id).select().single()
+      if (error) {
+        console.error('projectsApi.update error:', error)
+        return null
+      }
+      return data as Project
+    } catch (err) {
+      console.error('projectsApi.update exception:', err)
+      return null
+    }
+  },
+  delete: async (id: string): Promise<boolean> => {
+    try {
+      const { error } = await supabase.from('projects').delete().eq('id', id)
+      if (error) {
+        console.error('projectsApi.delete error:', error)
+        return false
+      }
+      return true
+    } catch (err) {
+      console.error('projectsApi.delete exception:', err)
+      return false
+    }
+  }
 }
 
 // ---------- ORDERS ----------
@@ -608,6 +639,13 @@ export const settingsApi = {
       console.error('settingsApi.update exception:', err)
       return null
     }
+  }
+  ,
+  // alias for update
+  set: async (key: string, value: any): Promise<SiteSetting | null> => {
+    // delegate to update via this
+    // @ts-ignore
+    return await (this as any).update(key, value)
   }
 }
 

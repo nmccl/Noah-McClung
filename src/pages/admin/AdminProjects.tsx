@@ -1,8 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, type DragEvent } from 'react'
 import { motion } from 'framer-motion'
 import { Plus, Edit, Trash2, Loader2, Save, X, Star, Upload, Image as ImageIcon } from 'lucide-react'
-import { projectsApi } from '@/functions/supabaseApi'
-import { mediaApi } from '@/lib/api'
+import { projectsApi, mediaApi } from '@/lib/api'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -169,7 +168,7 @@ export default function AdminProjects() {
     }
   }
 
-  const handleDrag = (e: React.DragEvent) => {
+  const handleDrag = (e: DragEvent) => {
     e.preventDefault()
     e.stopPropagation()
     if (e.type === 'dragenter' || e.type === 'dragover') {
@@ -179,7 +178,7 @@ export default function AdminProjects() {
     }
   }
 
-  const handleDrop = (e: React.DragEvent) => {
+  const handleDrop = (e: DragEvent) => {
     e.preventDefault()
     e.stopPropagation()
     setDragActive(false)

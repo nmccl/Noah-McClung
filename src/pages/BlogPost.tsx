@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import type { BlogPost } from '@/lib/api';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Calendar, Clock, Eye, Loader2 } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import ChromeBackground from '../components/noah/ChromeBackground';
 import Navigation from '../components/noah/Navigation';
-import { blogApi, analyticsApi } from '../functions/supabaseApi';
+import { blogApi, analyticsApi } from '@/lib/api';
 
-const formatDate = (dateString) => {
+const formatDate = (dateString: string) => {
   return new Date(dateString).toLocaleDateString('en-US', { 
     month: 'long', 
     day: 'numeric', 
@@ -17,9 +18,9 @@ const formatDate = (dateString) => {
 
 export default function BlogPost() {
   const { id } = useParams();
-  const [post, setPost] = useState(null);
+  const [post, setPost] = useState<BlogPost | null>(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
+  const [error, setError] = useState<string>('');
 
   useEffect(() => {
     console.log('Route param id:', id);
@@ -31,7 +32,7 @@ export default function BlogPost() {
     }
   }, [id]);
 
-  const loadPost = async (postId) => {
+  const loadPost = async (postId: string) => {
     console.log('Loading post:', postId);
     setLoading(true);
     setError('');
@@ -228,17 +229,17 @@ export default function BlogPost() {
                     {children}
                   </blockquote>
                 ),
-                code: ({ inline, children }) =>
+                code: ({ inline, children, ...props }: any) =>
                   inline ? (
-                    <code className="px-2 py-1 bg-[#151515] text-[#C0C0C0] text-sm rounded">{children}</code>
+                    <code className="px-2 py-1 bg-[#151515] text-[#C0C0C0] text-sm rounded" {...props}>{children}</code>
                   ) : (
                     <pre className="bg-[#0A0A0A] border border-[#1A1A1A] p-4 overflow-x-auto mb-6">
-                      <code className="text-[#909090] text-sm">{children}</code>
+                      <code className="text-[#909090] text-sm" {...props}>{children}</code>
                     </pre>
                   ),
                 a: ({ href, children }) => (
                   <a
-                    href__={href}
+                    href={href}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-white underline underline-offset-4 hover:text-[#C0C0C0] transition-colors"

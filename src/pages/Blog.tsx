@@ -1,22 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import type { BlogPost } from '@/lib/api';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import ChromeBackground from '../components/noah/ChromeBackground';
 import Navigation from '../components/noah/Navigation';
 import SectionLabel from '../components/noah/SectionLabel';
 import { Calendar, Clock, ArrowRight, Loader2 } from 'lucide-react';
-import { blogApi } from '../functions/supabaseApi';
+import { blogApi } from '@/lib/api';
 
-const formatDate = (dateString) => {
+const formatDate = (dateString: string) => {
   const date = new Date(dateString);
   return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 };
 
 export default function Blog() {
-  const [hoveredId, setHoveredId] = useState(null);
-  const [posts, setPosts] = useState([]);
+  const [hoveredId, setHoveredId] = useState<string | null>(null);
+  const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     loadPosts();
@@ -140,7 +141,7 @@ export default function Blog() {
                       <div className="flex items-center gap-4 mb-4 text-[10px] tracking-wider uppercase text-[#505050]">
                         <span className="flex items-center gap-1.5">
                           <Calendar className="w-3 h-3" />
-                          {formatDate(post.created_at || post.date)}
+                          {formatDate(String(post.created_at || post.date))}
                         </span>
                         <span className="flex items-center gap-1.5">
                           <Clock className="w-3 h-3" />
@@ -220,7 +221,7 @@ export default function Blog() {
                           {post.category}
                         </span>
                         <span className="text-[10px] tracking-wider uppercase text-[#404040]">
-                          {formatDate(post.created_at || post.date)}
+                          {formatDate(String(post.created_at || post.date))}
                         </span>
                         <span className="text-[10px] tracking-wider uppercase text-[#404040]">
                           {post.read_time || post.readTime}

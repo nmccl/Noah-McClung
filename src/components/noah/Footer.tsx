@@ -1,4 +1,3 @@
-import React from 'react'
 import { motion } from 'framer-motion'
 
 const socialLinks = [
@@ -50,7 +49,7 @@ export default function Footer() {
               {socialLinks.map((link) => (
                 <motion.a
                   key={link.name}
-                  href__={link.href}
+                  href={link.href}
                   className="text-xs text-[#606060] hover:text-white transition-colors duration-300"
                   whileHover={{ y: -2 }}
                 >
@@ -70,7 +69,7 @@ export default function Footer() {
           >
             <p className="text-[10px] tracking-[0.3em] uppercase text-[#404040] mb-4">Inquiries</p>
             <a
-              href__="mailto:contact@noahmcclung.com"
+              href="mailto:contact@noahmcclung.com"
               className="text-sm text-[#808080] hover:text-white transition-colors duration-300"
             >
               contact@noahnmcclung.com

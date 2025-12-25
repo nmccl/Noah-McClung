@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState, type FormEvent } from 'react'
 import { motion } from 'framer-motion'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { useAuth } from '@/contexts/AuthContext'
@@ -16,7 +16,7 @@ export default function Login() {
   const location = useLocation()
   const from = (location.state as any)?.from?.pathname || '/admin'
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     setError('')
     setLoading(true)

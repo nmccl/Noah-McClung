@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { Upload, Trash2, Loader2, Copy, Check, Image as ImageIcon, File } from 'lucide-react'
 import { mediaApi, type Media } from '@/lib/api'
@@ -71,7 +71,7 @@ export default function AdminMedia() {
         </div>
         <div>
           <input
-            ref__={fileInputRef}
+            ref={fileInputRef}
             type="file"
             multiple
             accept="image/*,video/*,application/pdf"

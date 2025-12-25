@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Trash2, Loader2, Search, Mail, UserCheck, UserX, Download } from 'lucide-react'
 import { subscribersApi, type Subscriber } from '@/lib/api'

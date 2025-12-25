@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { motion } from 'framer-motion';
 import ChromeBackground from '../components/noah/ChromeBackground';
 import Navigation from '../components/noah/Navigation';

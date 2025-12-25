@@ -1,8 +1,8 @@
-import React from 'react'
+import type { ReactNode } from 'react'
 import { motion } from 'framer-motion'
 
 interface SectionLabelProps {
-  children: React.ReactNode
+  children: ReactNode
   align?: 'left' | 'center'
 }
 

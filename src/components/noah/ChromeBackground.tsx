@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react'
+import { useRef, useEffect } from 'react'
 
 export default function ChromeBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -92,7 +92,7 @@ export default function ChromeBackground() {
 
   return (
     <canvas
-      ref__={canvasRef}
+      ref={canvasRef}
       className="fixed inset-0 w-full h-full pointer-events-none"
       style={{ zIndex: 0 }}
     />

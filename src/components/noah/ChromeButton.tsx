@@ -1,4 +1,3 @@
-import React from 'react'
 import { motion } from 'framer-motion'
 
 interface ChromeButtonProps {
@@ -41,7 +40,7 @@ export default function ChromeButton({
 
   return (
     <Component
-      href__={href}
+      href={href}
       onClick={onClick}
       className={`${baseClasses} ${variants[variant]} ${className}`}
       whileHover={{ scale: 1.02 }}
